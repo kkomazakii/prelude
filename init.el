@@ -145,4 +145,28 @@ by Prelude.")
  ;; greet the use with some useful tip
  (run-at-time 5 nil 'prelude-tip-of-the-day))
 
+
+;; ruby settings
+(require 'flymake-ruby)
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+
+(add-hook 'ruby-mode-hook 'projectile-on)
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
+
+(require 'robe)
+(add-hook 'ruby-mode-hook 'robe-mode)
+
+(setq ruby-deep-indent-paren nil)
+
+(global-set-key (kbd "C-c r r") 'inf-ruby)
+
+(global-company-mode t)
+(push 'company-robe company-backends)
+(setq company-dabbrev-downcase 0)
+(setq company-idle-delay 0)
+
+(setq ruby-insert-encoding-magic-comment nil)
+
+;; clj settings
+(add-hook 'clojure-mode-hook 'paredit-mode)
 ;;; init.el ends here
